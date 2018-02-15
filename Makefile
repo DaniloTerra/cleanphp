@@ -4,5 +4,8 @@ DOCKER_RUN_COMPOSER:=docker run -v ${PWD}:/app --rm composer:1.6
 test:
 	${DOCKER_RUN_PHP_UNIT} --bootstrap tests/bootstrap.php tests/
 
+test-coverage:
+	${DOCKER_RUN_PHP_UNIT} --bootstrap tests/bootstrap.php --coverage-html report/ --whitelist src/Domain/ tests/
+
 install-deps:
 	${DOCKER_RUN_COMPOSER} install
